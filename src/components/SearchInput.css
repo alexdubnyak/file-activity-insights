@@ -1,0 +1,106 @@
+/* Основной контейнер SearchInput */
+.search-input {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px;
+  width: 400px;
+  height: 36px;
+  position: relative;
+  border: 1px solid #000000;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Состояние фокуса */
+.search-input--focused {
+  border-color: #333538;
+}
+
+/* Отключенное состояние */
+.search-input--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.search-input--disabled .search-input__field {
+  cursor: not-allowed;
+}
+
+/* Поле ввода */
+.search-input__field {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #cfcfcf;
+  padding: 0;
+  margin: 0;
+  font-variation-settings: 'wdth' 100;
+}
+
+/* Стили плейсхолдера */
+.search-input__field::placeholder {
+  color: #818283;
+  opacity: 1;
+}
+
+.search-input__field::-webkit-input-placeholder {
+  color: #818283;
+  opacity: 1;
+}
+
+.search-input__field::-moz-placeholder {
+  color: #818283;
+  opacity: 1;
+}
+
+.search-input__field:-ms-input-placeholder {
+  color: #818283;
+  opacity: 1;
+}
+
+.search-input__field:-moz-placeholder {
+  color: #818283;
+  opacity: 1;
+}
+
+/* Убираем стандартные стили автозаполнения */
+.search-input__field:-webkit-autofill,
+.search-input__field:-webkit-autofill:hover,
+.search-input__field:-webkit-autofill:focus,
+.search-input__field:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px transparent inset;
+  -webkit-text-fill-color: #cfcfcf !important;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .search-input {
+    width: 280px;
+    min-width: 200px;
+  }
+}
+
+/* Анимация при вводе */
+.search-input__field:not(:placeholder-shown) {
+  color: #cfcfcf;
+}
+
+/* Стили выделения текста */
+.search-input__field::selection {
+  background-color: #333538;
+  color: #cfcfcf;
+}
+
+
+
+
+

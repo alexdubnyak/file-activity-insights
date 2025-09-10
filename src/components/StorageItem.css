@@ -1,0 +1,46 @@
+.storage-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border: none;
+  outline: none;
+  text-align: left;
+}
+
+.storage-item--standard {
+  background-color: #333538;
+  color: #646464;
+}
+
+.storage-item--hover {
+  background-color: #3260cd;
+  color: white;
+}
+
+.storage-item--active {
+  background-color: #254ca9;
+  color: #ffffff;
+}
+
+.storage-item__text {
+  flex: 1;
+  line-height: 16px;
+}
+
+.storage-item:focus {
+  outline: 2px solid #254ca9;
+  outline-offset: 2px;
+}
+
+/* Удалены дублирующиеся hover и active состояния - теперь управляются через JavaScript */
+

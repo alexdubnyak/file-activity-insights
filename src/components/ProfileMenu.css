@@ -1,0 +1,206 @@
+/* Основной контейнер компонента */
+.profile-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  padding: 0.375rem 1.25rem;
+  width: 178px;
+  height: 44px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+  border: none;
+  box-sizing: border-box;
+}
+
+/* Состояния компонента */
+.profile-menu--standard {
+  background-color: transparent;
+}
+
+.profile-menu--hover {
+  background-color: #333538;
+}
+
+.profile-menu--active {
+  background-color: #333538;
+}
+
+/* Контейнер с текстовой информацией */
+.profile-menu__user-info {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  align-items: flex-start;
+  justify-content: flex-start;
+  line-height: 0;
+  flex-shrink: 0;
+  width: 90px;
+  color: #cfcfcf;
+  transition: color 0.2s ease-in-out;
+}
+
+.profile-menu--hover .profile-menu__user-info {
+  color: #cfcfcf;
+}
+
+.profile-menu--active .profile-menu__user-info {
+  color: #ffffff;
+}
+
+/* Имя пользователя */
+.profile-menu__user-name {
+  font-size: 12px;
+  line-height: 16px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variation-settings: 'wdth' 100;
+  margin: 0;
+}
+
+/* План пользователя */
+.profile-menu__user-plan {
+  font-size: 10px;
+  line-height: 16px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variation-settings: 'wdth' 100;
+  margin: 0;
+}
+
+/* Контейнер для иконки стрелки */
+.profile-menu__icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  height: 21px;
+  width: 20px;
+  overflow: hidden;
+  padding: 3px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Иконка стрелки */
+.profile-menu__dropdown-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #cfcfcf;
+  transition: all 0.2s ease-in-out;
+  transform: rotate(0deg);
+}
+
+.profile-menu--hover .profile-menu__dropdown-icon {
+  color: #cfcfcf;
+}
+
+.profile-menu--active .profile-menu__dropdown-icon {
+  color: #ffffff;
+  transform: rotate(180deg);
+}
+
+
+/* SVG иконки стили */
+.profile-menu__icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  object-fit: contain;
+}
+
+/* Выпадающее меню */
+.profile-menu__dropdown {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: -39px;
+  width: 215px;
+  background-color: #333538;
+  border: 1px solid #000000;
+  border-radius: 0;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.profile-menu--active .profile-menu__dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+
+/* Фокус состояние для доступности */
+.profile-menu:focus {
+  outline: none;
+}
+
+/* Анимация появления меню */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-menu--active .profile-menu__dropdown {
+  animation: fadeInUp 0.2s ease-out;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 480px) {
+  .profile-menu {
+    width: 160px;
+  }
+  
+  .profile-menu__user-info {
+    width: 80px;
+  }
+  
+  .profile-menu__user-name {
+    font-size: 11px;
+  }
+  
+  .profile-menu__user-plan {
+    font-size: 9px;
+  }
+
+  .profile-menu__dropdown {
+    left: -30px;
+    width: 190px;
+  }
+}
+
+/* Дополнительные стили для улучшения визуала */
+.profile-menu__dropdown::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 39px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #333538;
+}
+
+/* Разделитель между группами пунктов меню (если нужен) */
+.profile-menu__menu-separator {
+  height: 1px;
+  background-color: #404346;
+  margin: 0;
+}
