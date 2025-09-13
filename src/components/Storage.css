@@ -25,10 +25,6 @@
   outline: none;
 }
 
-.storage__header--active {
-  background-color: white;
-  color: black;
-}
 
 .storage__header:hover {
   background-color: #141518;
@@ -41,6 +37,27 @@
 .storage__header:focus {
   outline: 2px solid #254ca9;
   outline-offset: 2px;
+}
+
+/* Убираем все возможные обводки для активного состояния заголовка */
+.storage__header--active {
+  background-color: white;
+  color: black;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.storage__header--active:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.storage__header--active:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .storage__header-text {

@@ -54,7 +54,7 @@ const Storage = ({
         aria-expanded={effectiveState === 'active'}
         aria-label={`${effectiveState === 'active' ? 'Свернуть' : 'Развернуть'} ${getServiceName()}`}
       >
-        <CloudIconsS type={type} />
+        <CloudIconsS type={type} state={effectiveState} />
         <span className="storage__header-text">
           {getServiceName()}
         </span>

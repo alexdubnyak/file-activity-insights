@@ -1,0 +1,108 @@
+/* AddStorage Button - точно как в Figma */
+.add-storage {
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base контейнер */
+.add-storage__base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  gap: 8px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+}
+
+/* Иконка контейнер */
+.add-storage__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af; /* Серый цвет по умолчанию */
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover состояние */
+.add-storage:hover:not(.add-storage--disabled) {
+  background-color: rgba(156, 163, 175, 0.1);
+}
+
+.add-storage:hover:not(.add-storage--disabled) .add-storage__icon {
+  color: #ffffff;
+}
+
+/* Active состояние */
+.add-storage:active:not(.add-storage--disabled) {
+  background-color: rgba(156, 163, 175, 0.2);
+  transform: scale(0.95);
+}
+
+/* Focus состояние */
+.add-storage:focus {
+  outline: 2px solid #254ca9;
+  outline-offset: 2px;
+}
+
+.add-storage:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Disabled состояние */
+.add-storage--disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.add-storage--disabled .add-storage__icon {
+  color: #6b7280;
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .add-storage__icon {
+    color: #d1d5db;
+  }
+  
+  .add-storage:hover:not(.add-storage--disabled) {
+    background-color: rgba(209, 213, 219, 0.1);
+  }
+  
+  .add-storage:hover:not(.add-storage--disabled) .add-storage__icon {
+    color: #ffffff;
+  }
+  
+  .add-storage:active:not(.add-storage--disabled) {
+    background-color: rgba(209, 213, 219, 0.2);
+  }
+}
+
+/* Анимация при клике */
+@keyframes addStorageClick {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.add-storage:active:not(.add-storage--disabled) {
+  animation: addStorageClick 0.15s ease-out;
+}

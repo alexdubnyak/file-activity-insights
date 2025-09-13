@@ -27,10 +27,6 @@
   color: white;
 }
 
-.storage-item--active {
-  background-color: #254ca9;
-  color: #ffffff;
-}
 
 .storage-item__text {
   flex: 1;
@@ -40,6 +36,27 @@
 .storage-item:focus {
   outline: 2px solid #254ca9;
   outline-offset: 2px;
+}
+
+/* Убираем все возможные обводки для активного состояния */
+.storage-item--active {
+  background-color: #254ca9;
+  color: #ffffff;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.storage-item--active:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.storage-item--active:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Удалены дублирующиеся hover и active состояния - теперь управляются через JavaScript */

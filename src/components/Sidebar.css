@@ -1,0 +1,110 @@
+/* Sidebar Component - точно как в Figma (182×100vh) */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 182px;
+  height: 100%;
+  background-color: #333538;
+  font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
+}
+
+/* Основной контент */
+.sidebar__main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+
+/* Все дочерние элементы заполняют полную ширину */
+.sidebar__main > * {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Footer */
+.sidebar__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  height: 112px;
+  background-color: #141518;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Footer текст */
+.sidebar__footer-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+  font-variation-settings: 'wdth' 100;
+}
+
+.sidebar__footer-text p {
+  margin: 0 0 4px 0;
+}
+
+.sidebar__footer-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Footer ссылки */
+.sidebar__footer-link {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+  cursor: pointer;
+}
+
+.sidebar__footer-link:hover {
+  color: #e5e7eb;
+}
+
+/* Footer версия */
+.sidebar__footer-version {
+  color: #646464 !important;
+  margin-top: 4px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    max-width: 182px;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .sidebar__footer {
+    height: auto;
+    min-height: 112px;
+    padding: 15px 10px;
+  }
+  
+  .sidebar__footer-text {
+    font-size: 9px;
+    line-height: 14px;
+  }
+}
+
+/* Анимации */
+.sidebar__main > * {
+  transition: all 0.2s ease;
+}
+
+.sidebar__footer {
+  transition: background-color 0.2s ease;
+}
+
+/* Hover эффекты для footer */
+.sidebar__footer:hover {
+  background-color: #0f1114;
+}

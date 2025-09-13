@@ -1,0 +1,95 @@
+/* RecentFiles Component - точно как в Figma */
+.recent-files {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  background-color: #141518;
+  gap: 38px;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Левая часть с иконкой и текстом */
+.recent-files__content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+/* Иконка */
+.recent-files__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #CFCFCF; /* Цвет из SVG файла */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Текст */
+.recent-files__label {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #ffffff;
+  white-space: nowrap;
+  font-variation-settings: 'wdth' 100;
+}
+
+/* Toggle контейнер */
+.recent-files__toggle {
+  flex-shrink: 0;
+}
+
+/* Переопределяем размер toggle для соответствия Figma */
+.recent-files__toggle .toggle-button {
+  width: 42px;
+  height: 24px;
+  background-color: #254ca9; /* switch/active/bg из Figma */
+  border-radius: 90px;
+}
+
+.recent-files__toggle .toggle-slider {
+  width: 20px;
+  height: 20px;
+  top: 2px;
+  left: 2px;
+  background-color: #ffffff;
+}
+
+/* Позиция слайдера когда включен */
+.recent-files__toggle .toggle-button--on .toggle-slider {
+  transform: translateX(18px);
+}
+
+/* Состояние OFF */
+.recent-files__toggle .toggle-button--off {
+  background-color: #6b7280; /* Серый цвет для выключенного состояния */
+}
+
+/* Hover эффекты */
+.recent-files:hover .recent-files__icon {
+  color: #e5e7eb;
+}
+
+.recent-files:hover .recent-files__label {
+  color: #f9fafb;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .recent-files {
+    width: 100%;
+    gap: 20px;
+  }
+  
+  .recent-files__label {
+    font-size: 11px;
+  }
+}
