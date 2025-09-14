@@ -1,0 +1,183 @@
+/* Breadcrumbs Component - точно как в Figma */
+.breadcrumbs {
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ffffff;
+    padding: 12px 0;
+    box-sizing: border-box;
+}
+
+/* Список breadcrumbs */
+.breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 6px;
+}
+
+/* Элемент breadcrumb */
+.breadcrumbs__item {
+    display: flex;
+    align-items: center;
+}
+
+/* Иконка домика */
+.breadcrumbs__home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #7e8398;
+    transition: color 0.2s ease-in-out;
+    padding: 0;
+    margin: 0;
+    border-radius: 2px;
+}
+
+.breadcrumbs__home:hover {
+    color: #124daf;
+    background-color: rgba(18, 77, 175, 0.1);
+}
+
+.breadcrumbs__home--active {
+    color: #124daf;
+}
+
+/* Разделитель стрелка */
+.breadcrumbs__separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: #7e8398;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* Ссылка текста */
+.breadcrumbs__link {
+    background: none;
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #7e8398;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+    padding: 4px 0;
+    margin: 0;
+    white-space: nowrap;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.breadcrumbs__link:hover {
+    color: #124daf;
+    background-color: rgba(18, 77, 175, 0.1);
+}
+
+.breadcrumbs__link--active {
+    color: #124daf;
+    cursor: default;
+    font-weight: 500;
+}
+
+.breadcrumbs__link--active:hover {
+    background-color: transparent;
+}
+
+/* Стили для иконок */
+.breadcrumbs__home img,
+.breadcrumbs__separator img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    filter: none;
+    transition: filter 0.2s ease-in-out;
+}
+
+/* Применяем цвет к иконкам через фильтры */
+.breadcrumbs__home img {
+    filter: brightness(0) saturate(100%) invert(59%) sepia(13%) saturate(1074%) hue-rotate(202deg) brightness(93%) contrast(86%);
+}
+
+.breadcrumbs__home:hover img {
+    filter: brightness(0) saturate(100%) invert(25%) sepia(79%) saturate(2476%) hue-rotate(215deg) brightness(97%) contrast(95%);
+}
+
+.breadcrumbs__home--active img {
+    filter: brightness(0) saturate(100%) invert(25%) sepia(79%) saturate(2476%) hue-rotate(215deg) brightness(97%) contrast(95%);
+}
+
+.breadcrumbs__separator img {
+    filter: brightness(0) saturate(100%) invert(59%) sepia(13%) saturate(1074%) hue-rotate(202deg) brightness(93%) contrast(86%);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .breadcrumbs {
+        padding: 8px 0;
+    }
+
+    .breadcrumbs__link {
+        font-size: 11px;
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .breadcrumbs__home img,
+    .breadcrumbs__separator img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .breadcrumbs__home,
+    .breadcrumbs__separator {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .breadcrumbs__link {
+        max-width: 80px;
+    }
+
+    .breadcrumbs__list {
+        flex-wrap: wrap;
+        gap: 4px 0;
+    }
+}
+
+/* Accessibility */
+.breadcrumbs__home:focus,
+.breadcrumbs__link:focus {
+    outline: 2px solid #124daf;
+    outline-offset: 2px;
+}
+
+/* Анимация появления */
+.breadcrumbs__item {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

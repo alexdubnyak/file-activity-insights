@@ -10,7 +10,7 @@
   height: 36px;
   position: relative;
   border: 1px solid #000000;
-  background-color: transparent;
+  background-color: #333538;
   transition: all 0.2s ease-in-out;
 }
 
@@ -99,8 +99,3 @@
   background-color: #333538;
   color: #cfcfcf;
 }
-
-
-
-
-

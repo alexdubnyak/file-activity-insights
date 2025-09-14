@@ -1,0 +1,207 @@
+/* ButtonToolbar Component - размер medium */
+.button-toolbar {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Размеры тулбара */
+.button-toolbar--small {
+    height: 32px;
+    padding: 4px;
+}
+
+.button-toolbar--medium {
+    height: 40px;
+    padding: 6px;
+}
+
+.button-toolbar--large {
+    height: 48px;
+    padding: 8px;
+}
+
+/* Выравнивание элементов */
+.button-toolbar--align-left {
+    justify-content: flex-start;
+}
+
+.button-toolbar--align-center {
+    justify-content: center;
+}
+
+.button-toolbar--align-right {
+    justify-content: flex-end;
+}
+
+.button-toolbar--align-space-between {
+    justify-content: space-between;
+}
+
+/* Отступы между элементами */
+.button-toolbar--gap-small>*+* {
+    margin-left: 4px;
+}
+
+.button-toolbar--gap-medium>*+* {
+    margin-left: 8px;
+}
+
+.button-toolbar--gap-large>*+* {
+    margin-left: 12px;
+}
+
+/* Стили кнопок тулбара */
+.toolbar-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000000;
+    background-color: #333538;
+    color: #cfcfcf;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+    user-select: none;
+}
+
+/* Размеры кнопок */
+.toolbar-button--small {
+    height: 24px;
+    padding: 0 8px;
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 2px;
+}
+
+.toolbar-button--medium {
+    height: 28px;
+    padding: 0 12px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 3px;
+}
+
+.toolbar-button--large {
+    height: 32px;
+    padding: 0 16px;
+    font-size: 13px;
+    line-height: 1;
+    border-radius: 4px;
+}
+
+/* Варианты кнопок */
+.toolbar-button--default {
+    background-color: #333538;
+    border-color: #000000;
+    color: #cfcfcf;
+}
+
+.toolbar-button--primary {
+    background-color: #254ca9;
+    border-color: #1a3a7a;
+    color: #ffffff;
+}
+
+.toolbar-button--secondary {
+    background-color: transparent;
+    border-color: #333538;
+    color: #333538;
+}
+
+.toolbar-button--danger {
+    background-color: #dc3545;
+    border-color: #b02a37;
+    color: #ffffff;
+}
+
+/* Состояния кнопок */
+.toolbar-button:hover:not(:disabled) {
+    background-color: #404448;
+    border-color: #333538;
+    color: #ffffff;
+}
+
+.toolbar-button--primary:hover:not(:disabled) {
+    background-color: #1a3a7a;
+    border-color: #0f2d5c;
+}
+
+.toolbar-button--secondary:hover:not(:disabled) {
+    background-color: #333538;
+    color: #ffffff;
+}
+
+.toolbar-button--danger:hover:not(:disabled) {
+    background-color: #b02a37;
+    border-color: #8b1e2b;
+}
+
+/* Активное состояние */
+.toolbar-button--active {
+    background-color: #254ca9;
+    border-color: #1a3a7a;
+    color: #ffffff;
+}
+
+.toolbar-button--active:hover {
+    background-color: #1a3a7a;
+}
+
+/* Отключенное состояние */
+.toolbar-button--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.toolbar-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 76, 169, 0.3);
+}
+
+/* Группировка кнопок */
+.button-toolbar .toolbar-button+.toolbar-button {
+    border-left: none;
+}
+
+.button-toolbar .toolbar-button:first-child {
+    border-radius: 3px 0 0 3px;
+}
+
+.button-toolbar .toolbar-button:last-child {
+    border-radius: 0 3px 3px 0;
+}
+
+.button-toolbar .toolbar-button:only-child {
+    border-radius: 3px;
+}
+
+/* Разделители */
+.button-toolbar__separator {
+    width: 1px;
+    height: 20px;
+    background-color: #666666;
+    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .button-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .toolbar-button--medium {
+        height: 32px;
+        font-size: 13px;
+    }
+
+    .button-toolbar--gap-medium>*+* {
+        margin-left: 6px;
+    }
+}

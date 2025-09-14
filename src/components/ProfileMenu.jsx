@@ -28,12 +28,12 @@ const menuItems = [
   { id: 'logout', label: 'Logout', icon: LogoutIcon }
 ];
 
-export default function ProfileMenu({ 
+export default function ProfileMenu({
   state = "standard",
-  userName = "Alexey Dubnyak", 
+  userName = "Alexey Dubnyak",
   userPlan = "Flex Cloud Annual",
   onStateChange = null,
-  onMenuItemClick = null 
+  onMenuItemClick = null
 }) {
   const [currentState, setCurrentState] = useState(state);
   const [isOpen, setIsOpen] = useState(state === "active");
@@ -89,7 +89,7 @@ export default function ProfileMenu({
 
   const handleMenuItemClick = (item) => {
     onMenuItemClick && onMenuItemClick(item);
-    
+
     // Закрываем меню после клика на пункт
     setCurrentState("standard");
     setIsOpen(false);
@@ -112,7 +112,7 @@ export default function ProfileMenu({
 
   return (
     <div ref={menuRef} className="profile-menu-wrapper">
-      <button 
+      <button
         className={containerClasses}
         data-name={`state=${currentState}`}
         data-node-id="7447:87103"
@@ -125,19 +125,19 @@ export default function ProfileMenu({
         aria-haspopup="true"
       >
         {/* Текстовый блок с информацией о пользователе */}
-        <div 
+        <div
           className="profile-menu__user-info"
           data-node-id="7447:87052"
         >
-          <p 
-            className="profile-menu__user-name" 
+          <p
+            className="profile-menu__user-name"
             data-node-id="7447:87053"
             title={userName}
           >
             {userName}
           </p>
-          <p 
-            className="profile-menu__user-plan" 
+          <p
+            className="profile-menu__user-plan"
             data-node-id="7447:87054"
             title={userPlan}
           >
@@ -145,15 +145,22 @@ export default function ProfileMenu({
           </p>
         </div>
 
-        {/* Иконка стрелки */}
-        <div 
-          className="profile-menu__icon-container" 
-          data-name="icon" 
+        {/* Иконки профиля и стрелки - прижаты к правой стороне */}
+        <div
+          className="profile-menu__icons"
+          data-name="icons"
           data-node-id="7447:87055"
         >
-          <div 
-            className="profile-menu__dropdown-icon profile-menu__icon" 
-            data-name="icon"
+          <div
+            className="profile-menu__profile-icon profile-menu__icon"
+            data-name="profile-icon"
+            aria-hidden="true"
+          >
+            <ProfileIcon />
+          </div>
+          <div
+            className="profile-menu__dropdown-icon profile-menu__icon"
+            data-name="dropdown-icon"
             aria-hidden="true"
           >
             <DropdownIcon />
@@ -163,7 +170,7 @@ export default function ProfileMenu({
 
         {/* Выпадающее меню */}
         {isOpen && (
-          <div 
+          <div
             className="profile-menu__dropdown"
             data-node-id="7447:87105"
             role="menu"

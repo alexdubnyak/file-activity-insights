@@ -4,14 +4,8 @@ import StorageRow from './StorageRow';
 import Storage from './Storage';
 import './Sidebar.css';
 
-const Sidebar = () => {
-  const [recentFilesEnabled, setRecentFilesEnabled] = useState(true);
+const Sidebar = ({ recentFilesEnabled = true, onRecentFilesToggle }) => {
   const [activeStorage, setActiveStorage] = useState('kudo'); // ARES Kudo Drive активен по умолчанию
-
-  const handleRecentFilesToggle = (enabled) => {
-    setRecentFilesEnabled(enabled);
-    console.log(`Recent Files: ${enabled ? 'включен' : 'выключен'}`);
-  };
 
   const handleAddStorageClick = () => {
     console.log('Добавление нового хранилища');
@@ -35,35 +29,35 @@ const Sidebar = () => {
         {/* Recent Files */}
         <RecentFiles
           enabled={recentFilesEnabled}
-          onToggle={handleRecentFilesToggle}
+          onToggle={onRecentFilesToggle}
         />
-        
+
         {/* Storage Row */}
         <StorageRow
           label="Storage"
           onAddClick={handleAddStorageClick}
         />
-        
+
         {/* Storage Items */}
         <Storage
           state={getStorageState('kudo')}
           type="kudo"
           onItemClick={() => handleStorageClick('kudo')}
         />
-        
+
         <Storage
           state={getStorageState('googleDrive')}
           type="google drive"
           onItemClick={() => handleStorageClick('googleDrive')}
         />
-        
+
         <Storage
           state={getStorageState('dropbox')}
           type="dropbox"
           onItemClick={() => handleStorageClick('dropbox')}
         />
       </div>
-      
+
       {/* Footer */}
       <div className="sidebar__footer">
         <div className="sidebar__footer-text">

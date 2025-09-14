@@ -1,0 +1,83 @@
+/* RecentFilesList Component - точно как в Figma */
+.recent-files-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Заголовок */
+.recent-files-list__header {
+    width: 100%;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.recent-files-list__title {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    color: #124daf;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Горизонтальный ряд файлов */
+.recent-files-list__row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* Контейнер каждого файла */
+.recent-files-list__item {
+    display: flex;
+    flex-direction: column;
+    width: 163px;
+    flex-shrink: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .recent-files-list__row {
+        gap: 15px;
+    }
+
+    .recent-files-list__item {
+        width: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .recent-files-list__row {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .recent-files-list__item {
+        width: calc(50% - 7.5px);
+        min-width: 150px;
+    }
+
+    .recent-files-list__title {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recent-files-list__item {
+        width: 100%;
+    }
+
+    .recent-files-list__row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
