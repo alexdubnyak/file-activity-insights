@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import RecentFilesList from './components/RecentFilesList';
 import ToolBarRow from './components/ToolBarRow';
 import Breadcrumbs from './components/Breadcrumbs';
+import FileBrowser from './components/FileBrowser';
 import './App.css';
 
 function App() {
@@ -48,6 +49,14 @@ function App() {
 
   const handleBreadcrumbClick = (item, index) => {
     console.log('Breadcrumb clicked:', item, 'at index:', index);
+  };
+
+  const handleFileClick = (file) => {
+    console.log('File clicked:', file);
+  };
+
+  const handleFolderClick = (folder) => {
+    console.log('Folder clicked:', folder);
   };
 
   return (
@@ -117,6 +126,15 @@ function App() {
           {recentFilesEnabled && (
             <Breadcrumbs
               onItemClick={handleBreadcrumbClick}
+            />
+          )}
+
+          {/* FileBrowser - под Breadcrumbs */}
+          {recentFilesEnabled && (
+            <FileBrowser
+              onFileClick={handleFileClick}
+              onFolderClick={handleFolderClick}
+              style={{ marginTop: '20px' }}
             />
           )}
         </div>
