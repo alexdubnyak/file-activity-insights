@@ -75,7 +75,7 @@ const FileBrowserRow = ({
 
             {/* ACCESS секция - кнопки действий */}
             <div className="file-browser-row__access-section">
-                <Tooltip content={`Share "${name}" with others`} position="top" delay={300}>
+                <Tooltip content={`Share access to "${name}"`} position="top" delay={300}>
                     <button
                         className="file-browser-row__action-btn"
                         onClick={handleShare}
@@ -83,7 +83,7 @@ const FileBrowserRow = ({
                         <img src={ShareSharpIcon} alt="Share" />
                     </button>
                 </Tooltip>
-                <Tooltip content={`Copy link to "${name}"`} position="top" delay={300}>
+                <Tooltip content={`Create view-only link for "${name}"`} position="top" delay={300}>
                     <button
                         className="file-browser-row__action-btn"
                         onClick={handleLink}
