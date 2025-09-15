@@ -1,0 +1,246 @@
+.file-details {
+  background: white;
+  width: 436px;
+  min-width: 436px;
+  border-left: 1px solid #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+  height: fit-content;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.file-details__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  border-bottom: 1px solid #f2f2f2;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.file-details__tabs {
+  display: flex;
+  height: 100%;
+}
+
+.file-details__tab {
+  background: none;
+  border: none;
+  padding: 11px 12px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #3f3f3f;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  text-transform: capitalize;
+  transition: all 0.2s ease;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.file-details__tab:hover {
+  background-color: #f8f9fa;
+}
+
+.file-details__tab--active {
+  border-bottom-color: #3260cd;
+  color: #3f3f3f;
+}
+
+.file-details__close {
+  background: none;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: #666;
+  transition: all 0.2s ease;
+}
+
+.file-details__close:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.file-details__filters {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-bottom: 1px solid #f2f2f2;
+  flex-shrink: 0;
+}
+
+.file-details__filter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.file-details__filter-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.file-details__filter-arrow {
+  width: 10px;
+  height: 5px;
+  color: #666;
+}
+
+.file-details__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.file-details__activity {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.file-details__day-group {
+  border: 1px solid #f2f2f2;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.file-details__day-header {
+  background-color: #f2f2f2;
+  padding: 8.5px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 36px;
+}
+
+.file-details__day-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: black;
+}
+
+.file-details__day-name {
+  font-weight: 600;
+}
+
+.file-details__day-full {
+  font-weight: 600;
+}
+
+.file-details__day-toggle {
+  background: none;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transform: scaleY(-1);
+  transition: all 0.2s ease;
+}
+
+.file-details__day-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.file-details__activities {
+  background: white;
+}
+
+.file-details__activity-item {
+  padding: 6px 14px;
+  border-bottom: 1px solid #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.file-details__activity-item:last-child {
+  border-bottom: none;
+}
+
+.file-details__activity-message {
+  font-size: 14px;
+  color: black;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.file-details__activity-highlight {
+  font-weight: 600;
+}
+
+.file-details__activity-time {
+  font-size: 12px;
+  color: black;
+  font-weight: 400;
+}
+
+.file-details__properties {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.file-details__property {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.file-details__property-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.file-details__property-value {
+  font-size: 14px;
+  color: #333;
+  font-weight: 400;
+}
+
+/* Анимация появления панели */
+.file-details {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .file-details {
+    width: 100%;
+    left: 0;
+  }
+}

@@ -5,10 +5,13 @@ import RecentFilesList from './components/RecentFilesList';
 import ToolBarRow from './components/ToolBarRow';
 import Breadcrumbs from './components/Breadcrumbs';
 import FileBrowser from './components/FileBrowser';
+import FileDetails from './components/FileDetails';
 import './App.css';
 
 function App() {
   const [recentFilesEnabled, setRecentFilesEnabled] = useState(true);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [fileDetailsVisible, setFileDetailsVisible] = useState(false);
 
   const handleHeaderSearch = (value) => {
     console.log(`Поиск: ${value}`);
@@ -53,6 +56,8 @@ function App() {
 
   const handleFileClick = (file) => {
     console.log('File clicked:', file);
+    setSelectedFile(file);
+    setFileDetailsVisible(true);
   };
 
   const handleFolderClick = (folder) => {
@@ -112,6 +117,11 @@ function App() {
     console.log('Permissions for file:', file);
     alert(`Настроить права доступа для: ${file.name}`);
     // Здесь можно добавить логику управления правами
+  };
+
+  const handleCloseFileDetails = () => {
+    setFileDetailsVisible(false);
+    setSelectedFile(null);
   };
 
   return (
@@ -185,20 +195,42 @@ function App() {
             onItemClick={handleBreadcrumbClick}
           />
 
-          {/* FileBrowser - всегда виден */}
-          <FileBrowser
-            onFileClick={handleFileClick}
-            onFolderClick={handleFolderClick}
-            onFileShare={handleFileShare}
-            onFileLink={handleFileLink}
-            onFileRename={handleFileRename}
-            onFileClone={handleFileClone}
-            onFileDownload={handleFileDownload}
-            onFileMove={handleFileMove}
-            onFileDelete={handleFileDelete}
-            onFilePermissions={handleFilePermissions}
-            style={{ marginTop: '20px' }}
-          />
+          {/* FileBrowser Container - flex layout */}
+          <div style={{ 
+            display: 'flex', 
+            marginTop: '20px',
+            gap: '0',
+            transition: 'all 0.3s ease'
+          }}>
+            {/* FileBrowser - сужается при открытии панели */}
+            <div style={{
+              flex: fileDetailsVisible ? '1' : '1',
+              width: fileDetailsVisible ? 'calc(100% - 436px)' : '100%',
+              transition: 'width 0.3s ease'
+            }}>
+              <FileBrowser
+                onFileClick={handleFileClick}
+                onFolderClick={handleFolderClick}
+                onFileShare={handleFileShare}
+                onFileLink={handleFileLink}
+                onFileRename={handleFileRename}
+                onFileClone={handleFileClone}
+                onFileDownload={handleFileDownload}
+                onFileMove={handleFileMove}
+                onFileDelete={handleFileDelete}
+                onFilePermissions={handleFilePermissions}
+              />
+            </div>
+            
+            {/* File Details Panel - появляется справа */}
+            {fileDetailsVisible && (
+              <FileDetails
+                file={selectedFile}
+                isVisible={fileDetailsVisible}
+                onClose={handleCloseFileDetails}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
