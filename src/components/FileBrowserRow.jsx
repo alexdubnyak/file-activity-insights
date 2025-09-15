@@ -68,25 +68,29 @@ const FileBrowserRow = ({
                 <div className="file-browser-row__icon">
                     <img src={PreviewSmallIcon} alt="file" className="file-browser-row__icon-img" />
                 </div>
-                <span className="file-browser-row__name">{name}</span>
+                <Tooltip content={`Open "${name}"`} position="top" delay={500}>
+                    <span className="file-browser-row__name">{name}</span>
+                </Tooltip>
             </div>
 
             {/* ACCESS секция - кнопки действий */}
             <div className="file-browser-row__access-section">
-                <button
-                    className="file-browser-row__action-btn"
-                    onClick={handleShare}
-                    title="Share"
-                >
-                    <img src={ShareSharpIcon} alt="Share" />
-                </button>
-                <button
-                    className="file-browser-row__action-btn"
-                    onClick={handleLink}
-                    title="Link"
-                >
-                    <img src={LinkSharpIcon} alt="Link" />
-                </button>
+                <Tooltip content={`Share "${name}" with others`} position="top" delay={300}>
+                    <button
+                        className="file-browser-row__action-btn"
+                        onClick={handleShare}
+                    >
+                        <img src={ShareSharpIcon} alt="Share" />
+                    </button>
+                </Tooltip>
+                <Tooltip content={`Copy link to "${name}"`} position="top" delay={300}>
+                    <button
+                        className="file-browser-row__action-btn"
+                        onClick={handleLink}
+                    >
+                        <img src={LinkSharpIcon} alt="Link" />
+                    </button>
+                </Tooltip>
             </div>
 
             {/* MODIFIED секция */}
