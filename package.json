@@ -1,7 +1,8 @@
 {
   "name": "file-activity-insights",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Современное веб-приложение для управления файлами и анализа активности с интуитивным интерфейсом",
   "type": "module",
   "scripts": {
     "dev": "vite",
