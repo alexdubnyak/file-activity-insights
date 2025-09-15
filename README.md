@@ -1,6 +1,6 @@
-# AdditionalMenu Component Demo
+# File Activity Insights
 
-Демонстрационный проект React компонента AdditionalMenu, созданного на основе дизайна из Figma.
+Интерфейс для просмотра активности файлов с возможностью фильтрации и детального анализа.
 
 ## Особенности
 
@@ -35,11 +35,13 @@ src/
 ## Установка и запуск
 
 1. Установите зависимости:
+
    ```bash
    npm install
    ```
 
 2. Запустите сервер разработки:
+
    ```bash
    npm run dev
    ```
@@ -63,19 +65,19 @@ src/
 #### Пример использования
 
 ```jsx
-import AdditionalMenu from './components/AdditionalMenu';
+import AdditionalMenu from "./components/AdditionalMenu";
 
 function App() {
   const handleStateChange = (newState) => {
-    console.log('Новое состояние:', newState);
+    console.log("Новое состояние:", newState);
   };
 
   const handleMenuItemClick = (item) => {
-    console.log('Выбран пункт меню:', item.label);
+    console.log("Выбран пункт меню:", item.label);
   };
 
   return (
-    <AdditionalMenu 
+    <AdditionalMenu
       userName="Иван Иванов"
       userPlan="Премиум план"
       onStateChange={handleStateChange}
@@ -101,22 +103,22 @@ function App() {
 #### Пример использования
 
 ```jsx
-import MenuItem from './components/MenuItem';
-import { StorageIcon } from './components/MenuIcons';
+import MenuItem from "./components/MenuItem";
+import { StorageIcon } from "./components/MenuIcons";
 
 function MyMenu() {
   return (
     <div>
-      <MenuItem 
+      <MenuItem
         icon={StorageIcon}
         label="Storage"
-        onClick={() => console.log('Storage clicked')}
+        onClick={() => console.log("Storage clicked")}
       />
-      <MenuItem 
+      <MenuItem
         icon={DrawingsIcon}
         label="Drawings Automation"
         badge="NEW"
-        onClick={() => console.log('Drawings clicked')}
+        onClick={() => console.log("Drawings clicked")}
       />
     </div>
   );
@@ -156,4 +158,45 @@ function MyMenu() {
 
 - `npm run dev` - запуск сервера разработки
 - `npm run build` - сборка для продакшена
+- `npm run build:s3` - сборка для деплоя в S3
 - `npm run preview` - предварительный просмотр собранного проекта
+- `npm run deploy` - деплой на AWS S3
+- `npm run deploy:aws` - простой деплой (билд + загрузка в S3)
+
+## Деплой
+
+Проект настроен для автоматического деплоя на AWS S3.
+
+### Быстрый старт
+
+```bash
+# Настройка деплоя (один раз)
+./setup-deploy.sh
+
+# Деплой проекта
+./deploy.sh
+```
+
+### Требования для деплоя
+
+- AWS CLI установлен и настроен
+- Доступ к S3 bucket `graebert-dev-projects`
+
+### Автоматический деплой
+
+Проект включает GitHub Actions для автоматического деплоя при push в main ветку.
+
+Для настройки добавьте секреты в GitHub:
+
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+
+### Доступ к сайту
+
+После деплоя сайт доступен по адресу:
+
+```
+https://projects.dev.graebert.com/file-activity-insights/
+```
+
+Подробные инструкции см. в [DEPLOYMENT.md](DEPLOYMENT.md)

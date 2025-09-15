@@ -7,34 +7,34 @@ import RecentFiles03 from '../assets/recent-files/recent-files-03.png';
 import RecentFiles04 from '../assets/recent-files/recent-files-04.png';
 
 const RecentFilesList = () => {
-    // Моковые данные файлов из Figma
+    // Моковые данные файлов с разными именами и временем
     const recentFiles = [
         {
             id: 1,
-            fileName: "Building elevations_co...",
+            fileName: "Playground",
             fileExtension: ".dwg",
-            timeAgo: "1 seconds ago",
+            timeAgo: "2 minutes ago",
             thumbnailSrc: RecentFiles01
         },
         {
             id: 2,
-            fileName: "Building elevations_co...",
+            fileName: "3D Model",
             fileExtension: ".dwg",
-            timeAgo: "1 seconds ago",
+            timeAgo: "15 minutes ago",
             thumbnailSrc: RecentFiles02
         },
         {
             id: 3,
-            fileName: "Building elevations_co...",
-            fileExtension: ".dwg",
-            timeAgo: "1 seconds ago",
+            fileName: "Floor Plan",
+            fileExtension: ".pdf",
+            timeAgo: "1 hour ago",
             thumbnailSrc: RecentFiles03
         },
         {
             id: 4,
-            fileName: "Building elevations_co...",
+            fileName: "Elevation",
             fileExtension: ".dwg",
-            timeAgo: "1 seconds ago",
+            timeAgo: "3 hours ago",
             thumbnailSrc: RecentFiles04
         }
     ];

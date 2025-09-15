@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:s3": "vite build --base=/file-activity-insights/",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "./deploy.sh",
+    "deploy:aws": "npm run build && aws s3 sync dist/ s3://graebert-dev-projects/file-activity-insights/ --delete"
   },
   "dependencies": {
     "react": "^19.1.1",

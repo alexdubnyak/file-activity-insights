@@ -35,10 +35,7 @@ const RecentFileItem = ({
             {/* Название файла */}
             <div className="recent-file-item__filename">
                 <div className="recent-file-item__name">
-                    {fileName}
-                </div>
-                <div className="recent-file-item__extension">
-                    {fileExtension}
+                    {fileName}{fileExtension}
                 </div>
             </div>
 
