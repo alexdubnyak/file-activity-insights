@@ -3,21 +3,23 @@ import './TitleRow.css';
 
 const TitleRow = () => {
     return (
-        <div className="title-row">
-            <div className="title-row__column title-row__column--name">
-                <span className="title-row__text">NAME</span>
-                <svg className="title-row__sort-icon" width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L4 4L7 1" stroke="#666666" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+        <div className="table-header">
+            <div className="table-header__name-section">
+                <span className="table-header__text">NAME</span>
+                <div className="table-header__sort-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 10L12 15L17 10" stroke="#666666" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </div>
             </div>
-            <div className="title-row__column title-row__column--access">
-                <span className="title-row__text">ACCESS</span>
+            <div className="table-header__access-section">
+                <span className="table-header__text">ACCESS</span>
             </div>
-            <div className="title-row__column title-row__column--modified">
-                <span className="title-row__text">MODIFIED</span>
+            <div className="table-header__modified-section">
+                <span className="table-header__text">MODIFIED</span>
             </div>
-            <div className="title-row__column title-row__column--size">
-                <span className="title-row__text">SIZE</span>
+            <div className="table-header__size-section">
+                <span className="table-header__text">SIZE</span>
             </div>
         </div>
     );

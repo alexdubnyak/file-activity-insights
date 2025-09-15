@@ -1,3 +1,22 @@
 /* App.css - очищен для полноэкранного интерфейса */
 
 /* Убираем все стили по умолчанию, которые могут добавлять отступы */
+
+/* Recent Files плавная анимация скрытия/показа */
+.recent-files-wrapper {
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.recent-files-wrapper--visible {
+    opacity: 1;
+    max-height: 1000px;
+    /* Достаточно большое значение для контента */
+    margin-bottom: 20px;
+}
+
+.recent-files-wrapper--hidden {
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0;
+}

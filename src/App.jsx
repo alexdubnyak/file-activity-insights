@@ -59,6 +59,61 @@ function App() {
     console.log('Folder clicked:', folder);
   };
 
+  const handleFileShare = (file) => {
+    console.log('Share file:', file);
+    // Здесь можно добавить логику для открытия модала или копирования ссылки
+    alert(`Поделиться файлом: ${file.name}`);
+  };
+
+  const handleFileLink = (file) => {
+    console.log('Get link for file:', file);
+    // Здесь можно добавить логику для получения публичной ссылки
+    alert(`Получить ссылку для файла: ${file.name}`);
+  };
+
+  // Обработчики контекстного меню
+  const handleFileRename = (file) => {
+    console.log('Rename file:', file);
+    const newName = prompt(`Переименовать файл "${file.name}":`, file.name);
+    if (newName && newName !== file.name) {
+      alert(`Файл переименован в: ${newName}`);
+      // Здесь можно добавить логику переименования
+    }
+  };
+
+  const handleFileClone = (file) => {
+    console.log('Clone file:', file);
+    alert(`Клонировать файл: ${file.name}`);
+    // Здесь можно добавить логику клонирования
+  };
+
+  const handleFileDownload = (file) => {
+    console.log('Download file:', file);
+    alert(`Скачать файл: ${file.name}`);
+    // Здесь можно добавить логику скачивания
+  };
+
+  const handleFileMove = (file) => {
+    console.log('Move file:', file);
+    alert(`Переместить файл: ${file.name}`);
+    // Здесь можно добавить логику перемещения
+  };
+
+  const handleFileDelete = (file) => {
+    console.log('Delete file:', file);
+    const confirmed = confirm(`Удалить файл "${file.name}"?`);
+    if (confirmed) {
+      alert(`Файл удален: ${file.name}`);
+      // Здесь можно добавить логику удаления
+    }
+  };
+
+  const handleFilePermissions = (file) => {
+    console.log('Permissions for file:', file);
+    alert(`Настроить права доступа для: ${file.name}`);
+    // Здесь можно добавить логику управления правами
+  };
+
   return (
     <div style={{
       display: 'flex',
@@ -108,35 +163,42 @@ function App() {
           margin: 0,
           padding: '20px'
         }}>
-          {recentFilesEnabled && <RecentFilesList />}
+          {/* Recent Files - только этот блок скрывается тогглом с анимацией */}
+          <div
+            className={`recent-files-wrapper ${recentFilesEnabled ? 'recent-files-wrapper--visible' : 'recent-files-wrapper--hidden'}`}
+          >
+            <RecentFilesList />
+          </div>
 
-          {/* ToolBar Row - под блоком Recent files */}
-          {recentFilesEnabled && (
-            <ToolBarRow
-              onUploadDrawing={handleUploadDrawing}
-              onCreateFile={handleCreateFile}
-              onCreateFolder={handleCreateFolder}
-              onRecycleBin={handleRecycleBin}
-              onFilterChange={handleFileFilterChange}
-              style={{ marginTop: '20px' }}
-            />
-          )}
+          {/* ToolBar Row - всегда виден */}
+          <ToolBarRow
+            onUploadDrawing={handleUploadDrawing}
+            onCreateFile={handleCreateFile}
+            onCreateFolder={handleCreateFolder}
+            onRecycleBin={handleRecycleBin}
+            onFilterChange={handleFileFilterChange}
+            style={{ marginTop: '0px' }}
+          />
 
-          {/* Breadcrumbs - под ToolBarRow */}
-          {recentFilesEnabled && (
-            <Breadcrumbs
-              onItemClick={handleBreadcrumbClick}
-            />
-          )}
+          {/* Breadcrumbs - всегда виден */}
+          <Breadcrumbs
+            onItemClick={handleBreadcrumbClick}
+          />
 
-          {/* FileBrowser - под Breadcrumbs */}
-          {recentFilesEnabled && (
-            <FileBrowser
-              onFileClick={handleFileClick}
-              onFolderClick={handleFolderClick}
-              style={{ marginTop: '20px' }}
-            />
-          )}
+          {/* FileBrowser - всегда виден */}
+          <FileBrowser
+            onFileClick={handleFileClick}
+            onFolderClick={handleFolderClick}
+            onFileShare={handleFileShare}
+            onFileLink={handleFileLink}
+            onFileRename={handleFileRename}
+            onFileClone={handleFileClone}
+            onFileDownload={handleFileDownload}
+            onFileMove={handleFileMove}
+            onFileDelete={handleFileDelete}
+            onFilePermissions={handleFilePermissions}
+            style={{ marginTop: '20px' }}
+          />
         </div>
       </div>
     </div>

@@ -1,9 +1,8 @@
 import React from 'react';
 import './FileBrowserRow.css';
-import FolderIcon from '../assets/file-browser/folder.svg';
-import SharedFolderIcon from '../assets/file-browser/shared folder.svg';
 import PreviewSmallIcon from '../assets/file-browser/preview-small.svg';
 import ShareSharpIcon from '../assets/file-browser/ShareSharp.svg';
+import LinkSharpIcon from '../assets/file-browser/LinkSharp.svg';
 
 const FileBrowserRow = ({
     type = 'file', // 'file', 'folder', 'shared-folder'
@@ -13,58 +12,91 @@ const FileBrowserRow = ({
     size = null,
     owner = 'me',
     onClick = null,
+    onShare = null,
+    onLink = null,
+    onContextMenu = null,
+    fileData = null,
     ...props
 }) => {
-    // Определяем иконку в зависимости от типа
-    const getIcon = () => {
-        switch (type) {
-            case 'folder':
-                return <img src={FolderIcon} alt="folder" className="file-browser-row__icon-img" />;
-            case 'shared-folder':
-                return <img src={SharedFolderIcon} alt="shared folder" className="file-browser-row__icon-img" />;
-            case 'file':
-            default:
-                return <img src={PreviewSmallIcon} alt="file" className="file-browser-row__icon-img" />;
-        }
-    };
-
     // Форматируем размер файла
     const formatSize = (sizeStr) => {
         if (!sizeStr || type === 'folder' || type === 'shared-folder') return '';
         return sizeStr;
     };
 
+    // Обработчики для кнопок действий
+    const handleShare = (e) => {
+        e.stopPropagation();
+        onShare?.();
+    };
+
+    const handleLink = (e) => {
+        e.stopPropagation();
+        onLink?.();
+    };
+
+    // Обработчик правого клика
+    const handleContextMenu = (e) => {
+        e.preventDefault(); // Предотвращаем стандартное контекстное меню браузера
+        if (onContextMenu) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            onContextMenu(e, {
+                x: e.clientX,
+                y: e.clientY,
+                file: fileData || {
+                    type,
+                    name,
+                    access,
+                    modified,
+                    size,
+                    owner
+                }
+            });
+        }
+    };
+
     return (
         <div
-            className={`file-browser-row ${type === 'folder' || type === 'shared-folder' ? 'file-browser-row--folder' : ''}`}
+            className="file-browser-row"
             onClick={onClick}
+            onContextMenu={handleContextMenu}
             {...props}
         >
-            {/* NAME колонка */}
-            <div className="file-browser-row__column file-browser-row__column--name">
+            {/* NAME секция */}
+            <div className="file-browser-row__name-section">
                 <div className="file-browser-row__icon">
-                    {getIcon()}
+                    <img src={PreviewSmallIcon} alt="file" className="file-browser-row__icon-img" />
                 </div>
                 <span className="file-browser-row__name">{name}</span>
             </div>
 
-            {/* ACCESS колонка */}
-            <div className="file-browser-row__column file-browser-row__column--access">
-                {access && (
-                    <div className="file-browser-row__access">
-                        <img src={ShareSharpIcon} alt="shared" className="file-browser-row__share-icon" />
-                    </div>
-                )}
+            {/* ACCESS секция - кнопки действий */}
+            <div className="file-browser-row__access-section">
+                <button
+                    className="file-browser-row__action-btn"
+                    onClick={handleShare}
+                    title="Share"
+                >
+                    <img src={ShareSharpIcon} alt="Share" />
+                </button>
+                <button
+                    className="file-browser-row__action-btn"
+                    onClick={handleLink}
+                    title="Link"
+                >
+                    <img src={LinkSharpIcon} alt="Link" />
+                </button>
             </div>
 
-            {/* MODIFIED колонка */}
-            <div className="file-browser-row__column file-browser-row__column--modified">
-                <span className="file-browser-row__modified">{modified}</span>
-                <span className="file-browser-row__owner">{owner}</span>
+            {/* MODIFIED секция */}
+            <div className="file-browser-row__modified-section">
+                <span className="file-browser-row__modified-text">
+                    {modified}, <strong>{owner}</strong>
+                </span>
             </div>
 
-            {/* SIZE колонка */}
-            <div className="file-browser-row__column file-browser-row__column--size">
+            {/* SIZE секция */}
+            <div className="file-browser-row__size-section">
                 <span className="file-browser-row__size">{formatSize(size)}</span>
             </div>
         </div>

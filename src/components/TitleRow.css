@@ -1,90 +1,136 @@
-/* TitleRow Component - заголовки колонок файлового браузера */
-.title-row {
+/* TableHeader Component - заголовки колонок файлового браузера согласно Figma дизайну */
+.table-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
-    height: 40px;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e5e7eb;
-    padding: 0 16px;
+    height: 24px;
+    padding: 0;
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
-    font-weight: 600;
-    color: #374151;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-weight: 700;
+    /* Bold */
+    color: #000000;
+    position: relative;
 }
 
-/* Колонки */
-.title-row__column {
+/* NAME секция */
+.table-header__name-section {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 4px;
-    padding: 0 8px;
+    width: 158px;
+    height: 24px;
+    flex-shrink: 0;
 }
 
-/* NAME колонка - самая широкая */
-.title-row__column--name {
-    flex: 1;
-    min-width: 200px;
+.table-header__sort-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
+    transition: opacity 0.15s ease;
 }
 
-.title-row__column--name:hover {
-    color: #111827;
+.table-header__sort-icon:hover {
+    opacity: 0.7;
 }
 
-/* ACCESS колонка */
-.title-row__column--access {
-    width: 120px;
+.table-header__sort-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ACCESS секция */
+.table-header__access-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 78px;
+    height: 16px;
     flex-shrink: 0;
+    margin-left: 97px;
+    /* 255px - 158px = 97px отступ от NAME секции */
 }
 
-/* MODIFIED колонка */
-.title-row__column--modified {
-    width: 140px;
+/* MODIFIED секция */
+.table-header__modified-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 150px;
+    height: 16px;
     flex-shrink: 0;
+    margin-left: 97px;
+    /* 430px - 333px (158+78+97) = 97px отступ */
 }
 
-/* SIZE колонка */
-.title-row__column--size {
-    width: 100px;
+/* SIZE секция */
+.table-header__size-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 60px;
+    height: 16px;
     flex-shrink: 0;
-    text-align: right;
-    justify-content: flex-end;
+    margin-left: 67px;
+    /* 677px - 610px = 67px отступ */
 }
 
-/* Текст заголовка */
-.title-row__text {
+/* Общий стиль для текста заголовков */
+.table-header__text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    /* Bold согласно Figma */
+    color: #000000;
+    line-height: 16px;
+    white-space: nowrap;
     user-select: none;
 }
 
-/* Иконка сортировки */
-.title-row__sort-icon {
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
+/* Uppercase для некоторых заголовков (как в Figma) */
+.table-header__modified-section .table-header__text,
+.table-header__size-section .table-header__text {
+    text-transform: uppercase;
 }
 
-.title-row__column--name:hover .title-row__sort-icon {
-    transform: translateY(-1px);
-}
-
-/* Адаптивность */
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
-    .title-row {
+    .table-header {
+        height: 20px;
         font-size: 11px;
-        padding: 0 12px;
     }
-    
-    .title-row__column--access {
-        width: 80px;
+
+    .table-header__name-section {
+        width: 140px;
+        height: 20px;
     }
-    
-    .title-row__column--modified {
-        width: 100px;
+
+    .table-header__sort-icon {
+        width: 20px;
+        height: 20px;
     }
-    
-    .title-row__column--size {
-        width: 80px;
+
+    .table-header__access-section {
+        width: 70px;
+        margin-left: 20px;
+    }
+
+    .table-header__modified-section {
+        width: 120px;
+        margin-left: 20px;
+    }
+
+    .table-header__size-section {
+        width: 50px;
+        margin-left: 20px;
+    }
+
+    .table-header__text {
+        font-size: 10px;
     }
 }

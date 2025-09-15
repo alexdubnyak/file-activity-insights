@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TitleRow from './TitleRow';
 import FileBrowserRow from './FileBrowserRow';
+import BrowserMenu from './BrowserMenu';
 import './FileBrowser.css';
 
 const FileBrowser = ({
     files = [],
     onFileClick = null,
     onFolderClick = null,
+    onFileShare = null,
+    onFileLink = null,
+    onFileRename = null,
+    onFileClone = null,
+    onFileDownload = null,
+    onFileMove = null,
+    onFileDelete = null,
+    onFilePermissions = null,
     ...props
 }) => {
-    // Пример данных файлов (как на новом скриншоте)
+    // Состояние для контекстного меню
+    const [contextMenu, setContextMenu] = useState({
+        isOpen: false,
+        position: { x: 0, y: 0 },
+        file: null
+    });
+    // Пример данных файлов согласно дизайну из Figma
     const defaultFiles = [
         {
             id: 1,
             type: 'file',
-            name: '2D Metro Berlin22.pdf',
+            name: 'Playground.dwg',
             access: 'shared',
             modified: '2 years ago',
             owner: 'me',
@@ -23,29 +38,29 @@ const FileBrowser = ({
         {
             id: 2,
             type: 'file',
-            name: '3D Playground.dwg',
+            name: '3D Model.dwg',
             access: 'shared',
-            modified: 'last year',
+            modified: '1 year ago',
             owner: 'me',
-            size: '52.8 KB'
+            size: '2.1 MB'
         },
         {
             id: 3,
             type: 'file',
-            name: 'A3 - Plan General.pdf',
+            name: 'Floor Plan.pdf',
             access: 'shared',
-            modified: '2 years ago',
+            modified: '6 months ago',
             owner: 'me',
-            size: '13.8 MB'
+            size: '1.5 MB'
         },
         {
             id: 4,
             type: 'file',
-            name: 'A4 Elevation.pdf',
+            name: 'Elevation.dwg',
             access: 'shared',
-            modified: '2 years ago',
+            modified: '3 months ago',
             owner: 'me',
-            size: '3 MB'
+            size: '4.2 MB'
         }
     ];
 
@@ -57,6 +72,57 @@ const FileBrowser = ({
         } else {
             onFileClick?.(file);
         }
+    };
+
+    const handleFileShare = (file) => {
+        onFileShare?.(file);
+    };
+
+    const handleFileLink = (file) => {
+        onFileLink?.(file);
+    };
+
+    // Обработчик контекстного меню
+    const handleContextMenu = (event, data) => {
+        setContextMenu({
+            isOpen: true,
+            position: { x: data.x, y: data.y },
+            file: data.file
+        });
+    };
+
+    // Закрытие контекстного меню
+    const handleCloseContextMenu = () => {
+        setContextMenu({
+            isOpen: false,
+            position: { x: 0, y: 0 },
+            file: null
+        });
+    };
+
+    // Обработчики действий меню
+    const handleMenuRename = (file) => {
+        onFileRename?.(file);
+    };
+
+    const handleMenuClone = (file) => {
+        onFileClone?.(file);
+    };
+
+    const handleMenuDownload = (file) => {
+        onFileDownload?.(file);
+    };
+
+    const handleMenuMove = (file) => {
+        onFileMove?.(file);
+    };
+
+    const handleMenuDelete = (file) => {
+        onFileDelete?.(file);
+    };
+
+    const handleMenuPermissions = (file) => {
+        onFilePermissions?.(file);
     };
 
     return (
@@ -72,10 +138,28 @@ const FileBrowser = ({
                         modified={file.modified}
                         size={file.size}
                         owner={file.owner}
+                        fileData={file}
                         onClick={() => handleItemClick(file)}
+                        onShare={() => handleFileShare(file)}
+                        onLink={() => handleFileLink(file)}
+                        onContextMenu={handleContextMenu}
                     />
                 ))}
             </div>
+
+            {/* Контекстное меню */}
+            <BrowserMenu
+                isOpen={contextMenu.isOpen}
+                position={contextMenu.position}
+                selectedFile={contextMenu.file}
+                onClose={handleCloseContextMenu}
+                onRename={handleMenuRename}
+                onClone={handleMenuClone}
+                onDownload={handleMenuDownload}
+                onMove={handleMenuMove}
+                onDelete={handleMenuDelete}
+                onPermissions={handleMenuPermissions}
+            />
         </div>
     );
 };
