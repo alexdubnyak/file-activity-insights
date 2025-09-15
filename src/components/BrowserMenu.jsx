@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './BrowserMenu.css';
+import Tooltip from './Tooltip';
 import RenameIcon from '../assets/file-browser/Rename.svg';
 import CloneIcon from '../assets/file-browser/Clone.svg';
 import DownloadIcon from '../assets/file-browser/Download.svg';
@@ -94,53 +95,65 @@ const BrowserMenu = ({
             }}
             {...props}
         >
-            <div
-                className="browser-menu__item browser-menu__item--active"
-                onClick={() => handleMenuClick('rename', onRename)}
-            >
-                <img src={RenameIcon} alt="Rename" className="browser-menu__icon" />
-                <span className="browser-menu__text">Rename</span>
-            </div>
+            <Tooltip content={`Rename "${selectedFile?.name || 'file'}"`} position="right" delay={300}>
+                <div
+                    className="browser-menu__item browser-menu__item--active"
+                    onClick={() => handleMenuClick('rename', onRename)}
+                >
+                    <img src={RenameIcon} alt="Rename" className="browser-menu__icon" />
+                    <span className="browser-menu__text">Rename</span>
+                </div>
+            </Tooltip>
 
-            <div
-                className="browser-menu__item"
-                onClick={() => handleMenuClick('clone', onClone)}
-            >
-                <img src={CloneIcon} alt="Clone" className="browser-menu__icon" />
-                <span className="browser-menu__text">Clone</span>
-            </div>
+            <Tooltip content={`Create a copy of "${selectedFile?.name || 'file'}"`} position="right" delay={300}>
+                <div
+                    className="browser-menu__item"
+                    onClick={() => handleMenuClick('clone', onClone)}
+                >
+                    <img src={CloneIcon} alt="Clone" className="browser-menu__icon" />
+                    <span className="browser-menu__text">Clone</span>
+                </div>
+            </Tooltip>
 
-            <div
-                className="browser-menu__item"
-                onClick={() => handleMenuClick('download', onDownload)}
-            >
-                <img src={DownloadIcon} alt="Download" className="browser-menu__icon" />
-                <span className="browser-menu__text">Download</span>
-            </div>
+            <Tooltip content={`Download "${selectedFile?.name || 'file'}" to your device`} position="right" delay={300}>
+                <div
+                    className="browser-menu__item"
+                    onClick={() => handleMenuClick('download', onDownload)}
+                >
+                    <img src={DownloadIcon} alt="Download" className="browser-menu__icon" />
+                    <span className="browser-menu__text">Download</span>
+                </div>
+            </Tooltip>
 
-            <div
-                className="browser-menu__item"
-                onClick={() => handleMenuClick('move', onMove)}
-            >
-                <img src={MoveIcon} alt="Move" className="browser-menu__icon" />
-                <span className="browser-menu__text">Move</span>
-            </div>
+            <Tooltip content={`Move "${selectedFile?.name || 'file'}" to another location`} position="right" delay={300}>
+                <div
+                    className="browser-menu__item"
+                    onClick={() => handleMenuClick('move', onMove)}
+                >
+                    <img src={MoveIcon} alt="Move" className="browser-menu__icon" />
+                    <span className="browser-menu__text">Move</span>
+                </div>
+            </Tooltip>
 
-            <div
-                className="browser-menu__item"
-                onClick={() => handleMenuClick('delete', onDelete)}
-            >
-                <img src={DeleteIcon} alt="Delete" className="browser-menu__icon" />
-                <span className="browser-menu__text">Delete</span>
-            </div>
+            <Tooltip content={`Delete "${selectedFile?.name || 'file'}" permanently`} position="right" delay={300}>
+                <div
+                    className="browser-menu__item"
+                    onClick={() => handleMenuClick('delete', onDelete)}
+                >
+                    <img src={DeleteIcon} alt="Delete" className="browser-menu__icon" />
+                    <span className="browser-menu__text">Delete</span>
+                </div>
+            </Tooltip>
 
-            <div
-                className="browser-menu__item"
-                onClick={() => handleMenuClick('permissions', onPermissions)}
-            >
-                <img src={PermissionsIcon} alt="Permissions" className="browser-menu__icon" />
-                <span className="browser-menu__text">Permissions</span>
-            </div>
+            <Tooltip content={`Manage permissions for "${selectedFile?.name || 'file'}"`} position="right" delay={300}>
+                <div
+                    className="browser-menu__item"
+                    onClick={() => handleMenuClick('permissions', onPermissions)}
+                >
+                    <img src={PermissionsIcon} alt="Permissions" className="browser-menu__icon" />
+                    <span className="browser-menu__text">Permissions</span>
+                </div>
+            </Tooltip>
         </div>
     );
 };

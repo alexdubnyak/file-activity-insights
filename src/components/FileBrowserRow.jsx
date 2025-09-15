@@ -1,5 +1,6 @@
 import React from 'react';
 import './FileBrowserRow.css';
+import Tooltip from './Tooltip';
 import PreviewSmallIcon from '../assets/file-browser/preview-small.svg';
 import ShareSharpIcon from '../assets/file-browser/ShareSharp.svg';
 import LinkSharpIcon from '../assets/file-browser/LinkSharp.svg';

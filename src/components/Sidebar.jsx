@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import RecentFiles from './RecentFiles';
 import StorageRow from './StorageRow';
 import Storage from './Storage';
+import Tooltip from './Tooltip';
 import './Sidebar.css';
 
 const Sidebar = ({ recentFilesEnabled = true, onRecentFilesToggle }) => {
@@ -39,23 +40,29 @@ const Sidebar = ({ recentFilesEnabled = true, onRecentFilesToggle }) => {
         />
 
         {/* Storage Items */}
-        <Storage
-          state={getStorageState('kudo')}
-          type="kudo"
-          onItemClick={() => handleStorageClick('kudo')}
-        />
+        <Tooltip content="ARES Kudo Drive - Cloud Storage" position="right">
+          <Storage
+            state={getStorageState('kudo')}
+            type="kudo"
+            onItemClick={() => handleStorageClick('kudo')}
+          />
+        </Tooltip>
 
-        <Storage
-          state={getStorageState('googleDrive')}
-          type="google drive"
-          onItemClick={() => handleStorageClick('googleDrive')}
-        />
+        <Tooltip content="Google Drive - Cloud Storage" position="right">
+          <Storage
+            state={getStorageState('googleDrive')}
+            type="google drive"
+            onItemClick={() => handleStorageClick('googleDrive')}
+          />
+        </Tooltip>
 
-        <Storage
-          state={getStorageState('dropbox')}
-          type="dropbox"
-          onItemClick={() => handleStorageClick('dropbox')}
-        />
+        <Tooltip content="Dropbox - Cloud Storage" position="right">
+          <Storage
+            state={getStorageState('dropbox')}
+            type="dropbox"
+            onItemClick={() => handleStorageClick('dropbox')}
+          />
+        </Tooltip>
       </div>
 
       {/* Footer */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import ButtonToolbar from './ButtonToolbar';
 import FileFilterDropdown from './FileFilterDropdown';
+import Tooltip from './Tooltip';
 import './ToolBarRow.css';
 
 // Импорт иконок из assets/tool-bar-row
@@ -51,50 +52,55 @@ const ToolBarRow = ({
             {/* Левая сторона - кнопки с иконками */}
             <div className="toolbar-row__left">
                 <ButtonToolbar size="medium" align="left" gap="small">
-                    <ButtonToolbar.Button
-                        variant="default"
-                        onClick={handleUploadDrawing}
-                        title="Upload Drawing"
-                    >
-                        <img src={UploadDrawingIcon} alt="" className="toolbar-icon" />
-                    </ButtonToolbar.Button>
+                    <Tooltip content="Upload Drawing" position="bottom">
+                        <ButtonToolbar.Button
+                            variant="default"
+                            onClick={handleUploadDrawing}
+                        >
+                            <img src={UploadDrawingIcon} alt="" className="toolbar-icon" />
+                        </ButtonToolbar.Button>
+                    </Tooltip>
 
-                    <ButtonToolbar.Button
-                        variant="default"
-                        onClick={handleCreateFile}
-                        title="Create File"
-                    >
-                        <img src={CreateFileIcon} alt="" className="toolbar-icon" />
-                    </ButtonToolbar.Button>
+                    <Tooltip content="Create File" position="bottom">
+                        <ButtonToolbar.Button
+                            variant="default"
+                            onClick={handleCreateFile}
+                        >
+                            <img src={CreateFileIcon} alt="" className="toolbar-icon" />
+                        </ButtonToolbar.Button>
+                    </Tooltip>
 
-                    <ButtonToolbar.Button
-                        variant="default"
-                        onClick={handleCreateFolder}
-                        title="Create Folder"
-                    >
-                        <img src={CreateFolderIcon} alt="" className="toolbar-icon" />
-                    </ButtonToolbar.Button>
+                    <Tooltip content="Create Folder" position="bottom">
+                        <ButtonToolbar.Button
+                            variant="default"
+                            onClick={handleCreateFolder}
+                        >
+                            <img src={CreateFolderIcon} alt="" className="toolbar-icon" />
+                        </ButtonToolbar.Button>
+                    </Tooltip>
                 </ButtonToolbar>
             </div>
 
             {/* Правая сторона - Recycle bin и фильтр */}
             <div className="toolbar-row__right">
                 {/* Recycle bin */}
-                <div
-                    className="toolbar-row__recycle-bin"
-                    onClick={handleRecycleBin}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            handleRecycleBin();
-                        }
-                    }}
-                >
-                    <span className="toolbar-row__recycle-text">Recycle bin</span>
-                    <img src={RecycleBinIcon} alt="" className="toolbar-row__recycle-icon" />
-                </div>
+                <Tooltip content="Open Recycle Bin" position="bottom">
+                    <div
+                        className="toolbar-row__recycle-bin"
+                        onClick={handleRecycleBin}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                handleRecycleBin();
+                            }
+                        }}
+                    >
+                        <span className="toolbar-row__recycle-text">Recycle bin</span>
+                        <img src={RecycleBinIcon} alt="" className="toolbar-row__recycle-icon" />
+                    </div>
+                </Tooltip>
 
                 {/* Фильтр файлов */}
                 <div className="toolbar-row__filter">

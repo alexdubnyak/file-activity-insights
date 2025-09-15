@@ -2,6 +2,7 @@ import React from 'react';
 import SearchInput from './SearchInput';
 import HelpMenu from './HelpMenu';
 import ProfileMenu from './ProfileMenu';
+import Tooltip from './Tooltip';
 import AresLogo from '../assets/header/ares_logo.svg';
 import './Header.css';
 
@@ -38,18 +39,22 @@ const Header = ({
         
         {/* Help Menu */}
         <div className="header__help">
-          <HelpMenu
-            onMenuItemClick={onHelpMenuItemClick}
-          />
+          <Tooltip content="Help & Support" position="bottom">
+            <HelpMenu
+              onMenuItemClick={onHelpMenuItemClick}
+            />
+          </Tooltip>
         </div>
         
         {/* Profile Menu */}
         <div className="header__profile">
-          <ProfileMenu
-            userName={userName}
-            userPlan={userPlan}
-            onMenuItemClick={onProfileMenuItemClick}
-          />
+          <Tooltip content={`${userName} - ${userPlan}`} position="bottom">
+            <ProfileMenu
+              userName={userName}
+              userPlan={userPlan}
+              onMenuItemClick={onProfileMenuItemClick}
+            />
+          </Tooltip>
         </div>
       </div>
     </header>
