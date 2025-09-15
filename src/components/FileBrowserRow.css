@@ -15,8 +15,13 @@
     user-select: none;
 }
 
-.file-browser-row:hover {
+.file-browser-row:hover:not(.file-browser-row--active) {
     background-color: #f9fafb;
+}
+
+/* Active/Selected state */
+.file-browser-row--active {
+    background-color: #ECECEC !important;
 }
 
 /* NAME секция - иконка + название */

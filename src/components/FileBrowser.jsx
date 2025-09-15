@@ -16,6 +16,7 @@ const FileBrowser = ({
     onFileMove = null,
     onFileDelete = null,
     onFilePermissions = null,
+    selectedFileId = null, // Добавляем пропс для выбранного файла
     ...props
 }) => {
     // Состояние для контекстного меню
@@ -139,6 +140,7 @@ const FileBrowser = ({
                         size={file.size}
                         owner={file.owner}
                         fileData={file}
+                        isActive={selectedFileId === file.id} // Передаем активное состояние
                         onClick={() => handleItemClick(file)}
                         onShare={() => handleFileShare(file)}
                         onLink={() => handleFileLink(file)}

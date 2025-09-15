@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import './FileDetails.css';
 
 // Импорт иконок из assets
-import CloseIcon from '../assets/file-browser/Delete.svg';
-import DateIcon from '../assets/file-browser/preview-small.svg'; // для date фильтра
-import UsersIcon from '../assets/profile-menu/type=users.svg'; // для usernames фильтра
-import ActionsIcon from '../assets/file-browser/Move.svg'; // для actions фильтра
+import CloseIcon from '../assets/file-browser/CloseRounded.svg';
+import DateIcon from '../assets/file-browser/date.svg'; // для date фильтра
+import UsersIcon from '../assets/file-browser/usernames.svg'; // для usernames фильтра
+import ActionsIcon from '../assets/file-browser/actions.svg'; // для actions фильтра
 
 const FileDetails = ({ file, isVisible, onClose }) => {
   const [activeTab, setActiveTab] = useState('insights');
@@ -95,14 +95,14 @@ const FileDetails = ({ file, isVisible, onClose }) => {
           </button>
         </div>
         <button className="file-details__close" onClick={onClose}>
-          <img src={CloseIcon} alt="Close" width="20" height="20" />
+          <img src={CloseIcon} alt="Close" width="16" height="16" />
         </button>
       </div>
 
       <div className="file-details__filters">
         <div className="file-details__filter">
           <div className="file-details__filter-icon">
-            <img src={DateIcon} alt="Date" width="20" height="20" />
+            <img src={DateIcon} alt="Date" width="16" height="16" />
           </div>
           <svg className="file-details__filter-arrow" width="10" height="5" viewBox="0 0 10 5" fill="none">
             <path d="M0 0L5 5L10 0H0Z" fill="currentColor"/>
@@ -110,7 +110,7 @@ const FileDetails = ({ file, isVisible, onClose }) => {
         </div>
         <div className="file-details__filter">
           <div className="file-details__filter-icon">
-            <img src={UsersIcon} alt="Users" width="20" height="20" />
+            <img src={UsersIcon} alt="Users" width="16" height="16" />
           </div>
           <svg className="file-details__filter-arrow" width="10" height="5" viewBox="0 0 10 5" fill="none">
             <path d="M0 0L5 5L10 0H0Z" fill="currentColor"/>
@@ -118,7 +118,7 @@ const FileDetails = ({ file, isVisible, onClose }) => {
         </div>
         <div className="file-details__filter">
           <div className="file-details__filter-icon">
-            <img src={ActionsIcon} alt="Actions" width="20" height="20" />
+            <img src={ActionsIcon} alt="Actions" width="16" height="16" />
           </div>
           <svg className="file-details__filter-arrow" width="10" height="5" viewBox="0 0 10 5" fill="none">
             <path d="M0 0L5 5L10 0H0Z" fill="currentColor"/>

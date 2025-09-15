@@ -169,46 +169,57 @@ function App() {
         <div style={{
           flex: 1,
           backgroundColor: '#ffffff',
-          overflow: 'auto',
+          overflow: 'hidden',
           margin: 0,
-          padding: '20px'
+          padding: '20px',
+          display: 'flex',
+          flexDirection: 'column'
         }}>
           {/* Recent Files - только этот блок скрывается тогглом с анимацией */}
           <div
             className={`recent-files-wrapper ${recentFilesEnabled ? 'recent-files-wrapper--visible' : 'recent-files-wrapper--hidden'}`}
+            style={{ flexShrink: 0 }}
           >
             <RecentFilesList />
           </div>
 
           {/* ToolBar Row - всегда виден */}
-          <ToolBarRow
-            onUploadDrawing={handleUploadDrawing}
-            onCreateFile={handleCreateFile}
-            onCreateFolder={handleCreateFolder}
-            onRecycleBin={handleRecycleBin}
-            onFilterChange={handleFileFilterChange}
-            style={{ marginTop: '0px' }}
-          />
+          <div style={{ flexShrink: 0 }}>
+            <ToolBarRow
+              onUploadDrawing={handleUploadDrawing}
+              onCreateFile={handleCreateFile}
+              onCreateFolder={handleCreateFolder}
+              onRecycleBin={handleRecycleBin}
+              onFilterChange={handleFileFilterChange}
+              style={{ marginTop: '0px' }}
+            />
+          </div>
 
           {/* Breadcrumbs - всегда виден */}
-          <Breadcrumbs
-            onItemClick={handleBreadcrumbClick}
-          />
+          <div style={{ flexShrink: 0 }}>
+            <Breadcrumbs
+              onItemClick={handleBreadcrumbClick}
+            />
+          </div>
 
           {/* FileBrowser Container - flex layout */}
           <div style={{ 
             display: 'flex', 
             marginTop: '20px',
             gap: '0',
+            flex: 1,
+            overflow: 'hidden',
             transition: 'all 0.3s ease'
           }}>
             {/* FileBrowser - сужается при открытии панели */}
             <div style={{
               flex: fileDetailsVisible ? '1' : '1',
-              width: fileDetailsVisible ? 'calc(100% - 436px)' : '100%',
-              transition: 'width 0.3s ease'
+              width: fileDetailsVisible ? 'calc(100% - 289px)' : '100%',
+              transition: 'width 0.3s ease',
+              height: '100%'
             }}>
               <FileBrowser
+                selectedFileId={selectedFile?.id}
                 onFileClick={handleFileClick}
                 onFolderClick={handleFolderClick}
                 onFileShare={handleFileShare}

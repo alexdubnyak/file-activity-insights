@@ -17,6 +17,7 @@ const FileBrowserRow = ({
     onLink = null,
     onContextMenu = null,
     fileData = null,
+    isActive = false, // Добавляем поддержку активного состояния
     ...props
 }) => {
     // Форматируем размер файла
@@ -58,7 +59,7 @@ const FileBrowserRow = ({
 
     return (
         <div
-            className="file-browser-row"
+            className={`file-browser-row ${isActive ? 'file-browser-row--active' : ''}`}
             onClick={onClick}
             onContextMenu={handleContextMenu}
             {...props}
