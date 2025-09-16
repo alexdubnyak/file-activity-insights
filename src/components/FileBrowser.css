@@ -16,24 +16,26 @@
     width: 100%;
     flex: 1;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f9fafb;
 }
 
-/* Скроллбар */
 .file-browser__content::-webkit-scrollbar {
     width: 6px;
 }
 
 .file-browser__content::-webkit-scrollbar-track {
-    background: #f1f5f9;
+    background: #f9fafb;
+    border-radius: 3px;
 }
 
 .file-browser__content::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #d1d5db;
     border-radius: 3px;
 }
 
 .file-browser__content::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+    background: #9ca3af;
 }
 
 /* Пустое состояние */

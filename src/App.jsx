@@ -10,8 +10,9 @@ import './App.css';
 
 function App() {
   const [recentFilesEnabled, setRecentFilesEnabled] = useState(true);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [fileDetailsVisible, setFileDetailsVisible] = useState(false);
+  const [selectedFile, setSelectedFile] = useState({ id: 1, type: 'file', name: 'Playground.dwg', access: 'shared', modified: '2 years ago', owner: 'me', size: '3 MB' });
+  const [fileDetailsVisible, setFileDetailsVisible] = useState(true);
+  const [fileDetailsTab, setFileDetailsTab] = useState('properties');
 
   const handleHeaderSearch = (value) => {
     console.log(`Поиск: ${value}`);
@@ -58,6 +59,7 @@ function App() {
     console.log('File clicked:', file);
     setSelectedFile(file);
     setFileDetailsVisible(true);
+    setFileDetailsTab('properties');
   };
 
   const handleFolderClick = (folder) => {
@@ -114,14 +116,18 @@ function App() {
   };
 
   const handleFilePermissions = (file) => {
-    console.log('Permissions for file:', file);
-    alert(`Настроить права доступа для: ${file.name}`);
-    // Здесь можно добавить логику управления правами
+    console.log('handleFilePermissions called with file:', file);
+    console.log('Setting fileDetailsTab to insights');
+    setSelectedFile(file);
+    setFileDetailsVisible(true);
+    setFileDetailsTab('insights');
+    console.log('State updates called');
   };
 
   const handleCloseFileDetails = () => {
     setFileDetailsVisible(false);
     setSelectedFile(null);
+    setFileDetailsTab('properties');
   };
 
   return (
@@ -239,6 +245,7 @@ function App() {
                 file={selectedFile}
                 isVisible={fileDetailsVisible}
                 onClose={handleCloseFileDetails}
+                initialTab={fileDetailsTab}
               />
             )}
           </div>

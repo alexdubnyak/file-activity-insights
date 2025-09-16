@@ -4,6 +4,7 @@ import Tooltip from './Tooltip';
 import PreviewSmallIcon from '../assets/file-browser/preview-small.svg';
 import ShareSharpIcon from '../assets/file-browser/ShareSharp.svg';
 import LinkSharpIcon from '../assets/file-browser/LinkSharp.svg';
+import PermissionsIcon from '../assets/file-browser/actions.svg';
 
 const FileBrowserRow = ({
     type = 'file', // 'file', 'folder', 'shared-folder'
@@ -15,6 +16,7 @@ const FileBrowserRow = ({
     onClick = null,
     onShare = null,
     onLink = null,
+    onPermissions = null,
     onContextMenu = null,
     fileData = null,
     isActive = false, // Добавляем поддержку активного состояния
@@ -29,12 +31,32 @@ const FileBrowserRow = ({
     // Обработчики для кнопок действий
     const handleShare = (e) => {
         e.stopPropagation();
-        onShare?.();
+        // Убрано действие по клику
     };
 
     const handleLink = (e) => {
         e.stopPropagation();
-        onLink?.();
+        // Убрано действие по клику
+    };
+
+    const handlePermissions = (e) => {
+        e.stopPropagation();
+        console.log('Actions button clicked, calling onPermissions with:', fileData || {
+            type,
+            name,
+            access,
+            modified,
+            size,
+            owner
+        });
+        onPermissions?.(fileData || {
+            type,
+            name,
+            access,
+            modified,
+            size,
+            owner
+        });
     };
 
     // Обработчик правого клика
@@ -90,6 +112,19 @@ const FileBrowserRow = ({
                         onClick={handleLink}
                     >
                         <img src={LinkSharpIcon} alt="Link" />
+                    </button>
+                </Tooltip>
+                <Tooltip content={
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        View file activity insights for "{name}"
+                        <div className="file-browser-row__badge">NEW</div>
+                    </div>
+                } position="top" delay={300}>
+                    <button
+                        className="file-browser-row__action-btn"
+                        onClick={handlePermissions}
+                    >
+                        <img src={PermissionsIcon} alt="Permissions" />
                     </button>
                 </Tooltip>
             </div>

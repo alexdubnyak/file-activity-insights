@@ -8,8 +8,8 @@ import UsersIcon from '../assets/file-browser/usernames.svg'; // для username
 import ActionsIcon from '../assets/file-browser/actions.svg'; // для actions фильтра
 import PreviewBigIcon from '../assets/file-browser/preview-big.svg';
 
-const FileDetails = ({ file, isVisible, onClose }) => {
-  const [activeTab, setActiveTab] = useState('properties');
+const FileDetails = ({ file, isVisible, onClose, initialTab = 'properties' }) => {
+  const [activeTab, setActiveTab] = useState(initialTab);
   const [collapsedDays, setCollapsedDays] = useState({});
   const [dateFilter, setDateFilter] = useState([]);
   const [userFilter, setUserFilter] = useState([]);
@@ -21,6 +21,12 @@ const FileDetails = ({ file, isVisible, onClose }) => {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showActionDropdown, setShowActionDropdown] = useState(false);
   const [visibleDaysCount, setVisibleDaysCount] = useState(5);
+
+  // Обновляем активную вкладку при изменении initialTab
+  useEffect(() => {
+    console.log('FileDetails useEffect: initialTab changed to:', initialTab);
+    setActiveTab(initialTab);
+  }, [initialTab, file]);
 
   // Закрытие dropdown при клике вне его
   useEffect(() => {
@@ -331,11 +337,9 @@ const FileDetails = ({ file, isVisible, onClose }) => {
             onClick={() => setActiveTab('insights')}
           >
             File insights
+            <div className="file-details__tab-badge">NEW</div>
           </button>
         </div>
-        <button className="file-details__close" onClick={onClose}>
-          <img src={CloseIcon} alt="Close" width="16" height="16" />
-        </button>
       </div>
 
       {activeTab === 'insights' && (

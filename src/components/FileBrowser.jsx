@@ -62,6 +62,60 @@ const FileBrowser = ({
             modified: '3 months ago',
             owner: 'me',
             size: '4.2 MB'
+        },
+        {
+            id: 5,
+            type: 'file',
+            name: 'Site Plan.dwg',
+            access: 'shared',
+            modified: '2 months ago',
+            owner: 'Sarah Chen',
+            size: '5.8 MB'
+        },
+        {
+            id: 6,
+            type: 'file',
+            name: 'Details.dwg',
+            access: 'shared',
+            modified: '1 month ago',
+            owner: 'Alex Rodriguez',
+            size: '2.7 MB'
+        },
+        {
+            id: 7,
+            type: 'file',
+            name: 'Sections.dwg',
+            access: 'shared',
+            modified: '3 weeks ago',
+            owner: 'Maria Garcia',
+            size: '3.4 MB'
+        },
+        {
+            id: 8,
+            type: 'file',
+            name: 'Structural Plan.pdf',
+            access: 'shared',
+            modified: '2 weeks ago',
+            owner: 'David Kim',
+            size: '6.2 MB'
+        },
+        {
+            id: 9,
+            type: 'file',
+            name: 'Electrical Layout.dwg',
+            access: 'shared',
+            modified: '1 week ago',
+            owner: 'Lisa Wang',
+            size: '4.1 MB'
+        },
+        {
+            id: 10,
+            type: 'file',
+            name: 'HVAC System.dwg',
+            access: 'shared',
+            modified: '3 days ago',
+            owner: 'John Smith',
+            size: '7.3 MB'
         }
     ];
 
@@ -144,6 +198,7 @@ const FileBrowser = ({
                         onClick={() => handleItemClick(file)}
                         onShare={() => handleFileShare(file)}
                         onLink={() => handleFileLink(file)}
+                        onPermissions={onFilePermissions}
                         onContextMenu={handleContextMenu}
                     />
                 ))}

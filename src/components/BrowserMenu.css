@@ -2,8 +2,8 @@
 .browser-menu {
     position: fixed;
     z-index: 1000;
-    width: 165px;
-    height: 240px;
+    width: 209px;
+    height: 280px;
     background-color: #1e2023;
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -48,6 +48,7 @@
     height: 20px;
     flex-shrink: 0;
     object-fit: contain;
+    color: #d8d8d9;
 }
 
 /* Текст */
@@ -119,4 +120,22 @@
 
 .browser-menu--adjust-both {
     transform: translate(-100%, -100%);
+}
+
+/* Badge for new menu item */
+.browser-menu__badge {
+    background: #ef7c28;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.72px;
+    padding: 4px;
+    border-radius: 1px;
+    line-height: 1;
+    margin-left: auto;
+}
+
+.browser-menu__item--new {
+    position: relative;
 }

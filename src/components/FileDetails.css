@@ -51,6 +51,20 @@
   color: #3f3f3f;
 }
 
+/* Tab badge */
+.file-details__tab-badge {
+  background: #ef7c28;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.72px;
+  padding: 4px;
+  border-radius: 1px;
+  line-height: 1;
+  margin-left: 8px;
+}
+
 .file-details__close {
   background: none;
   border: none;

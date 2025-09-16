@@ -7,6 +7,7 @@ import DownloadIcon from '../assets/file-browser/Download.svg';
 import MoveIcon from '../assets/file-browser/Move.svg';
 import DeleteIcon from '../assets/file-browser/Delete.svg';
 import PermissionsIcon from '../assets/file-browser/Permessions.svg';
+import ActionsMenuIcon from '../assets/file-browser/actions-menu.svg';
 
 const BrowserMenu = ({
     isOpen = false,
@@ -18,6 +19,7 @@ const BrowserMenu = ({
     onMove = null,
     onDelete = null,
     onPermissions = null,
+    onFileActivityInsights = null,
     selectedFile = null,
     ...props
 }) => {
@@ -154,6 +156,18 @@ const BrowserMenu = ({
                     <span className="browser-menu__text">Permissions</span>
                 </div>
             </Tooltip>
+
+            <Tooltip content={`View file activity insights for "${selectedFile?.name || 'file'}"`} position="right" delay={300}>
+                <div
+                    className="browser-menu__item browser-menu__item--new"
+                    onClick={() => handleMenuClick('fileActivityInsights', onPermissions)}
+                >
+                    <img src={ActionsMenuIcon} alt="File activity insights" className="browser-menu__icon" />
+                    <span className="browser-menu__text">File activity insights</span>
+                    <div className="browser-menu__badge">NEW</div>
+                </div>
+            </Tooltip>
+
         </div>
     );
 };

@@ -67,7 +67,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: 6px;
-    width: 78px;
+    width: 120px;
     height: 36px;
     flex-shrink: 0;
     margin-left: 97px;
@@ -87,11 +87,25 @@
     cursor: pointer;
     transition: all 0.15s ease;
     flex-shrink: 0;
+    position: relative;
 }
 
 .file-browser-row__action-btn:hover {
-    background-color: #eeeeee;
-    border-color: #cccccc;
+    background-color: #254CA8;
+    border: none;
+}
+
+.file-browser-row__action-btn:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.file-browser-row__action-btn:active {
+    background-color: #305DC5;
+    border: none;
+}
+
+.file-browser-row__action-btn:active img {
+    filter: brightness(0) invert(1);
 }
 
 .file-browser-row__action-btn img {
@@ -108,8 +122,8 @@
     width: 150px;
     height: 16px;
     flex-shrink: 0;
-    margin-left: 97px;
-    /* 430px - 333px (158+78+97) = 97px отступ */
+    margin-left: 20px;
+    /* Уменьшен отступ из-за добавления кнопок Actions */
 }
 
 .file-browser-row__modified-text {
@@ -149,6 +163,20 @@
     /* Bold согласно Figma */
     color: #000000;
     line-height: 16px;
+    white-space: nowrap;
+}
+
+/* Badge for tooltip */
+.file-browser-row__badge {
+    background: #ef7c28;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.72px;
+    padding: 4px;
+    border-radius: 1px;
+    line-height: 1;
     white-space: nowrap;
 }
 
