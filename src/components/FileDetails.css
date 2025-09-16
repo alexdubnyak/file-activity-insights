@@ -151,6 +151,15 @@
   color: #000000;
 }
 
+.file-details__dropdown-check-container {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
 .file-details__dropdown-check {
   color: #3260cd;
   flex-shrink: 0;
@@ -222,6 +231,12 @@
   align-items: center;
   justify-content: space-between;
   min-height: 36px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.file-details__day-header:hover {
+  background-color: #e8e8e8;
 }
 
 .file-details__day-title {
@@ -242,17 +257,12 @@
 }
 
 .file-details__day-toggle {
-  background: none;
-  border: none;
   width: 24px;
   height: 24px;
-  border-radius: 4px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #666;
-  transition: all 0.2s ease;
 }
 
 .file-details__day-toggle svg {
@@ -270,6 +280,16 @@
 
 .file-details__activities {
   background: white;
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  opacity: 1;
+}
+
+.file-details__activities--collapsed {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease-in, opacity 0.2s ease-in;
 }
 
 .file-details__activity-item {
@@ -296,9 +316,28 @@
 }
 
 .file-details__activity-time {
-  font-size: 12px;
-  color: black;
+  font-size: 11px;
+  color: #666;
+  margin-left: auto;
+}
+
+.file-details__load-more {
+  width: 100%;
+  background: #e5e7ec;
+  border: none;
+  border-radius: 2px;
+  padding: 6px 12px;
+  margin-top: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
   font-weight: 400;
+  color: #010204;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.file-details__load-more:hover {
+  background: #d8dae0;
 }
 
 .file-details__properties {
